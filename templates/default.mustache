@@ -431,11 +431,11 @@ if has("nvim")
   " Comment
   hi @comment               guifg=#{{base03-hex}} gui=italic
   " Keyword — matches Keyword (0E), Conditional (0E), Repeat (0A), Exception (08)
-  hi @keyword               guifg=#{{base0E-hex}}
-  hi @keyword.function      guifg=#{{base0E-hex}}
+  hi @keyword               guifg=#{{base08-hex}}
+  hi @keyword.function      guifg=#{{base08-hex}}
   hi @keyword.operator      guifg=#{{base0E-hex}}
   hi @keyword.return        guifg=#{{base0E-hex}}
-  hi @conditional           guifg=#{{base0E-hex}}
+  hi @conditional           guifg=#{{base08-hex}}
   hi @repeat                guifg=#{{base0A-hex}}
   hi @exception             guifg=#{{base08-hex}}
   hi @include               guifg=#{{base0D-hex}}
@@ -445,7 +445,7 @@ if has("nvim")
   hi @string.regex          guifg=#{{base0C-hex}}
   hi @string.regexp         guifg=#{{base0C-hex}}
   hi @string.special        guifg=#{{base0C-hex}}
-  hi @string.special.symbol guifg=#{{base0B-hex}}
+  hi @string.special.symbol guifg=#{{base0D-hex}}
   hi @character             guifg=#{{base08-hex}}
   " Constant / Number — matches Constant (09), Number (09), Boolean (09)
   hi @number                guifg=#{{base09-hex}}
@@ -455,13 +455,13 @@ if has("nvim")
   hi @constant.builtin      guifg=#{{base09-hex}}
   hi @constant.macro        guifg=#{{base08-hex}}
   " Function / Method — matches Function (0D); calls same as definitions
-  hi @function              guifg=#{{base0D-hex}}
-  hi @function.builtin      guifg=#{{base0D-hex}}
-  hi @function.call         guifg=#{{base0D-hex}}
-  hi @function.macro        guifg=#{{base08-hex}}
-  hi @method                guifg=#{{base0D-hex}}
-  hi @method.call           guifg=#{{base0D-hex}}
-  hi @constructor           guifg=#{{base0D-hex}}
+  hi @function              guifg=#{{base0E-hex}}
+  hi @function.builtin      guifg=#{{base0E-hex}}
+  hi @function.call         guifg=#{{base0E-hex}}
+  hi @function.macro        guifg=#{{base0E-hex}}
+  hi @method                guifg=#{{base0E-hex}}
+  hi @method.call           guifg=#{{base0E-hex}}
+  hi @constructor           guifg=#{{base0E-hex}}
   " Variable / Parameter
   hi @parameter             guifg=#{{base05-hex}}
   hi @variable              guifg=#{{base05-hex}}
@@ -481,7 +481,7 @@ if has("nvim")
   " Punctuation
   hi @punctuation.bracket   guifg=#{{base05-hex}}
   hi @punctuation.delimiter guifg=#{{base05-hex}}
-  hi @punctuation.special   guifg=#{{base0E-hex}}
+  hi @punctuation.special   guifg=#{{base05-hex}}
   " Markup
   hi @text.literal          guifg=#{{base0B-hex}}
   hi @text.uri              guifg=#{{base08-hex}} gui=underline
