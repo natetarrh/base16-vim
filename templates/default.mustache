@@ -426,6 +426,70 @@ call <sid>hi("StartifySpecial",  s:gui03, "", s:cterm03, "", "", "")
 " Java highlighting
 call <sid>hi("javaOperator",     s:gui0D, "", s:cterm0D, "", "", "")
 
+" Treesitter highlighting (Neovim 0.8+)
+if has("nvim")
+  " Comment
+  hi @comment               guifg=#{{base03-hex}} gui=italic
+  " Keyword — matches Keyword (0E), Conditional (0E), Repeat (0A), Exception (08)
+  hi @keyword               guifg=#{{base0E-hex}}
+  hi @keyword.function      guifg=#{{base0E-hex}}
+  hi @keyword.operator      guifg=#{{base0E-hex}}
+  hi @keyword.return        guifg=#{{base0E-hex}}
+  hi @conditional           guifg=#{{base0E-hex}}
+  hi @repeat                guifg=#{{base0A-hex}}
+  hi @exception             guifg=#{{base08-hex}}
+  hi @include               guifg=#{{base0D-hex}}
+  " String — matches String (0B), SpecialChar (0F), Special (0C)
+  hi @string                guifg=#{{base0B-hex}}
+  hi @string.escape         guifg=#{{base0C-hex}}
+  hi @string.regex          guifg=#{{base0C-hex}}
+  hi @string.regexp         guifg=#{{base0C-hex}}
+  hi @string.special        guifg=#{{base0C-hex}}
+  hi @string.special.symbol guifg=#{{base0B-hex}}
+  hi @character             guifg=#{{base08-hex}}
+  " Constant / Number — matches Constant (09), Number (09), Boolean (09)
+  hi @number                guifg=#{{base09-hex}}
+  hi @boolean               guifg=#{{base09-hex}}
+  hi @float                 guifg=#{{base09-hex}}
+  hi @constant              guifg=#{{base09-hex}}
+  hi @constant.builtin      guifg=#{{base09-hex}}
+  hi @constant.macro        guifg=#{{base08-hex}}
+  " Function / Method — matches Function (0D); calls same as definitions
+  hi @function              guifg=#{{base0D-hex}}
+  hi @function.builtin      guifg=#{{base0D-hex}}
+  hi @function.call         guifg=#{{base0D-hex}}
+  hi @function.macro        guifg=#{{base08-hex}}
+  hi @method                guifg=#{{base0D-hex}}
+  hi @method.call           guifg=#{{base0D-hex}}
+  hi @constructor           guifg=#{{base0D-hex}}
+  " Variable / Parameter
+  hi @parameter             guifg=#{{base05-hex}}
+  hi @variable              guifg=#{{base05-hex}}
+  hi @variable.builtin      guifg=#{{base09-hex}}
+  hi @field                 guifg=#{{base05-hex}}
+  hi @property              guifg=#{{base05-hex}}
+  " Type — matches Type (0A)
+  hi @type                  guifg=#{{base0A-hex}}
+  hi @type.builtin          guifg=#{{base0A-hex}}
+  hi @type.definition       guifg=#{{base0A-hex}}
+  hi @namespace             guifg=#{{base0A-hex}}
+  hi @symbol                guifg=#{{base0B-hex}}
+  " Tag (HTML/XML)
+  hi @tag                   guifg=#{{base08-hex}}
+  hi @tag.attribute         guifg=#{{base0A-hex}}
+  hi @tag.delimiter         guifg=#{{base05-hex}}
+  " Punctuation
+  hi @punctuation.bracket   guifg=#{{base05-hex}}
+  hi @punctuation.delimiter guifg=#{{base05-hex}}
+  hi @punctuation.special   guifg=#{{base0E-hex}}
+  " Markup
+  hi @text.literal          guifg=#{{base0B-hex}}
+  hi @text.uri              guifg=#{{base08-hex}} gui=underline
+  hi @text.reference        guifg=#{{base0D-hex}}
+  hi @text.strong           guifg=#{{base05-hex}} gui=bold
+  hi @text.emphasis         guifg=#{{base05-hex}} gui=italic
+endif
+
 " Remove functions
 delf <sid>hi
 
