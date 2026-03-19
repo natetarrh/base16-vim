@@ -31,22 +31,22 @@ let s:gui06        = "ECEFF4"
 let g:base16_gui06 = "ECEFF4"
 let s:gui07        = "8FBCBB"
 let g:base16_gui07 = "8FBCBB"
-let s:gui08        = "88C0D0"
-let g:base16_gui08 = "88C0D0"
-let s:gui09        = "81A1C1"
-let g:base16_gui09 = "81A1C1"
-let s:gui0A        = "5E81AC"
-let g:base16_gui0A = "5E81AC"
-let s:gui0B        = "BF616A"
-let g:base16_gui0B = "BF616A"
-let s:gui0C        = "D08770"
-let g:base16_gui0C = "D08770"
-let s:gui0D        = "EBCB8B"
-let g:base16_gui0D = "EBCB8B"
-let s:gui0E        = "A3BE8C"
-let g:base16_gui0E = "A3BE8C"
-let s:gui0F        = "B48EAD"
-let g:base16_gui0F = "B48EAD"
+let s:gui08        = "BF616A"
+let g:base16_gui08 = "BF616A"
+let s:gui09        = "D08770"
+let g:base16_gui09 = "D08770"
+let s:gui0A        = "EBCB8B"
+let g:base16_gui0A = "EBCB8B"
+let s:gui0B        = "A3BE8C"
+let g:base16_gui0B = "A3BE8C"
+let s:gui0C        = "88C0D0"
+let g:base16_gui0C = "88C0D0"
+let s:gui0D        = "81A1C1"
+let g:base16_gui0D = "81A1C1"
+let s:gui0E        = "B48EAD"
+let g:base16_gui0E = "B48EAD"
+let s:gui0F        = "5E81AC"
+let g:base16_gui0F = "5E81AC"
 
 " Terminal color definitions
 let s:cterm00        = "00"
@@ -100,20 +100,20 @@ endif
 " Neovim terminal colours
 if has("nvim")
   let g:terminal_color_0 =  "#2E3440"
-  let g:terminal_color_1 =  "#88C0D0"
-  let g:terminal_color_2 =  "#BF616A"
-  let g:terminal_color_3 =  "#5E81AC"
-  let g:terminal_color_4 =  "#EBCB8B"
-  let g:terminal_color_5 =  "#A3BE8C"
-  let g:terminal_color_6 =  "#D08770"
+  let g:terminal_color_1 =  "#BF616A"
+  let g:terminal_color_2 =  "#A3BE8C"
+  let g:terminal_color_3 =  "#EBCB8B"
+  let g:terminal_color_4 =  "#81A1C1"
+  let g:terminal_color_5 =  "#B48EAD"
+  let g:terminal_color_6 =  "#88C0D0"
   let g:terminal_color_7 =  "#E5E9F0"
   let g:terminal_color_8 =  "#4C566A"
-  let g:terminal_color_9 =  "#88C0D0"
-  let g:terminal_color_10 = "#BF616A"
-  let g:terminal_color_11 = "#5E81AC"
-  let g:terminal_color_12 = "#EBCB8B"
-  let g:terminal_color_13 = "#A3BE8C"
-  let g:terminal_color_14 = "#D08770"
+  let g:terminal_color_9 =  "#BF616A"
+  let g:terminal_color_10 = "#A3BE8C"
+  let g:terminal_color_11 = "#EBCB8B"
+  let g:terminal_color_12 = "#81A1C1"
+  let g:terminal_color_13 = "#B48EAD"
+  let g:terminal_color_14 = "#88C0D0"
   let g:terminal_color_15 = "#8FBCBB"
   let g:terminal_color_background = g:terminal_color_0
   let g:terminal_color_foreground = g:terminal_color_5
@@ -124,20 +124,20 @@ if has("nvim")
 elseif has("terminal")
   let g:terminal_ansi_colors = [
         \ "#2E3440",
-        \ "#88C0D0",
         \ "#BF616A",
-        \ "#5E81AC",
-        \ "#EBCB8B",
         \ "#A3BE8C",
-        \ "#D08770",
+        \ "#EBCB8B",
+        \ "#81A1C1",
+        \ "#B48EAD",
+        \ "#88C0D0",
         \ "#E5E9F0",
         \ "#4C566A",
-        \ "#88C0D0",
         \ "#BF616A",
-        \ "#5E81AC",
-        \ "#EBCB8B",
         \ "#A3BE8C",
-        \ "#D08770",
+        \ "#EBCB8B",
+        \ "#81A1C1",
+        \ "#B48EAD",
+        \ "#88C0D0",
         \ "#8FBCBB",
         \ ]
 endif
@@ -153,11 +153,22 @@ function! g:Base16hi(group, guifg, guibg, ctermfg, ctermbg, ...)
   let l:attr = get(a:, 1, "")
   let l:guisp = get(a:, 2, "")
 
+  " See :help highlight-guifg
+  let l:gui_special_names = ["NONE", "bg", "background", "fg", "foreground"]
+
   if a:guifg != ""
-    exec "hi " . a:group . " guifg=#" . a:guifg
+    if index(l:gui_special_names, a:guifg) >= 0
+      exec "hi " . a:group . " guifg=" . a:guifg
+    else
+      exec "hi " . a:group . " guifg=#" . a:guifg
+    endif
   endif
   if a:guibg != ""
-    exec "hi " . a:group . " guibg=#" . a:guibg
+    if index(l:gui_special_names, a:guibg) >= 0
+      exec "hi " . a:group . " guibg=" . a:guibg
+    else
+      exec "hi " . a:group . " guibg=#" . a:guibg
+    endif
   endif
   if a:ctermfg != ""
     exec "hi " . a:group . " ctermfg=" . a:ctermfg
@@ -169,7 +180,11 @@ function! g:Base16hi(group, guifg, guibg, ctermfg, ctermbg, ...)
     exec "hi " . a:group . " gui=" . l:attr . " cterm=" . l:attr
   endif
   if l:guisp != ""
-    exec "hi " . a:group . " guisp=#" . l:guisp
+    if index(l:gui_special_names, l:guisp) >= 0
+      exec "hi " . a:group . " guisp=" . l:guisp
+    else
+      exec "hi " . a:group . " guisp=#" . l:guisp
+    endif
   endif
 endfunction
 
@@ -332,6 +347,12 @@ call <sid>hi("jsGlobalNodeObjects", s:gui0A, "", s:cterm0A, "", "", "")
 call <sid>hi("jsExceptions",        s:gui0A, "", s:cterm0A, "", "", "")
 call <sid>hi("jsBuiltins",          s:gui0A, "", s:cterm0A, "", "", "")
 
+" LSP highlighting
+call <sid>hi("LspDiagnosticsDefaultError", s:gui08, "", s:cterm08, "", "", "")
+call <sid>hi("LspDiagnosticsDefaultWarning", s:gui09, "", s:cterm09, "", "", "")
+call <sid>hi("LspDiagnosticsDefaultHnformation", s:gui05, "", s:cterm05, "", "", "")
+call <sid>hi("LspDiagnosticsDefaultHint", s:gui03, "", s:cterm03, "", "", "")
+
 " Mail highlighting
 call <sid>hi("mailQuoted1",  s:gui0A, "", s:cterm0A, "", "", "")
 call <sid>hi("mailQuoted2",  s:gui0B, "", s:cterm0B, "", "", "")
@@ -404,6 +425,68 @@ call <sid>hi("StartifySpecial",  s:gui03, "", s:cterm03, "", "", "")
 
 " Java highlighting
 call <sid>hi("javaOperator",     s:gui0D, "", s:cterm0D, "", "", "")
+
+" Treesitter highlighting (Neovim 0.8+)
+if has("nvim")
+  " Comment
+  hi @comment               guifg=#4C566A gui=italic
+  " Keyword
+  hi @keyword               guifg=#B48EAD
+  hi @keyword.function      guifg=#B48EAD
+  hi @keyword.operator      guifg=#B48EAD
+  hi @keyword.return        guifg=#B48EAD
+  hi @conditional           guifg=#B48EAD
+  hi @repeat                guifg=#EBCB8B
+  hi @exception             guifg=#BF616A
+  hi @include               guifg=#81A1C1
+  " String
+  hi @string                guifg=#A3BE8C
+  hi @string.escape         guifg=#88C0D0
+  hi @string.regex          guifg=#88C0D0
+  hi @string.special        guifg=#88C0D0
+  hi @character             guifg=#BF616A
+  " Constant / Number
+  hi @number                guifg=#D08770
+  hi @boolean               guifg=#D08770
+  hi @float                 guifg=#D08770
+  hi @constant              guifg=#D08770
+  hi @constant.builtin      guifg=#D08770
+  hi @constant.macro        guifg=#BF616A
+  " Function / Method — calls match definitions
+  hi @function              guifg=#81A1C1
+  hi @function.builtin      guifg=#81A1C1
+  hi @function.call         guifg=#81A1C1
+  hi @function.macro        guifg=#BF616A
+  hi @method                guifg=#81A1C1
+  hi @method.call           guifg=#81A1C1
+  hi @constructor           guifg=#81A1C1
+  " Variable / Parameter
+  hi @parameter             guifg=#E5E9F0
+  hi @variable              guifg=#E5E9F0
+  hi @variable.builtin      guifg=#D08770
+  hi @field                 guifg=#E5E9F0
+  hi @property              guifg=#E5E9F0
+  " Type
+  hi @type                  guifg=#EBCB8B
+  hi @type.builtin          guifg=#EBCB8B
+  hi @type.definition       guifg=#EBCB8B
+  hi @namespace             guifg=#EBCB8B
+  hi @symbol                guifg=#A3BE8C
+  " Tag (HTML/XML)
+  hi @tag                   guifg=#BF616A
+  hi @tag.attribute         guifg=#EBCB8B
+  hi @tag.delimiter         guifg=#E5E9F0
+  " Punctuation
+  hi @punctuation.bracket   guifg=#E5E9F0
+  hi @punctuation.delimiter guifg=#E5E9F0
+  hi @punctuation.special   guifg=#B48EAD
+  " Markup
+  hi @text.literal          guifg=#A3BE8C
+  hi @text.uri              guifg=#BF616A gui=underline
+  hi @text.reference        guifg=#81A1C1
+  hi @text.strong           guifg=#E5E9F0 gui=bold
+  hi @text.emphasis         guifg=#E5E9F0 gui=italic
+endif
 
 " Remove functions
 delf <sid>hi
