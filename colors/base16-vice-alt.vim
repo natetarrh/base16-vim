@@ -431,11 +431,11 @@ if has("nvim")
   " Comment
   hi @comment               guifg=#875faf gui=italic
   " Keyword — matches Keyword (0E), Conditional (0E), Repeat (0A), Exception (08)
-  hi @keyword               guifg=#d7afff
-  hi @keyword.function      guifg=#d7afff
+  hi @keyword               guifg=#ff005f
+  hi @keyword.function      guifg=#ff005f
   hi @keyword.operator      guifg=#d7afff
   hi @keyword.return        guifg=#d7afff
-  hi @conditional           guifg=#d7afff
+  hi @conditional           guifg=#ff005f
   hi @repeat                guifg=#ffffaf
   hi @exception             guifg=#ff005f
   hi @include               guifg=#afffff
@@ -445,7 +445,7 @@ if has("nvim")
   hi @string.regex          guifg=#00ffaf
   hi @string.regexp         guifg=#00ffaf
   hi @string.special        guifg=#00ffaf
-  hi @string.special.symbol guifg=#87ffff
+  hi @string.special.symbol guifg=#afffff
   hi @character             guifg=#ff005f
   " Constant / Number — matches Constant (09), Number (09), Boolean (09)
   hi @number                guifg=#ff00ff
@@ -455,13 +455,13 @@ if has("nvim")
   hi @constant.builtin      guifg=#ff00ff
   hi @constant.macro        guifg=#ff005f
   " Function / Method — matches Function (0D); calls same as definitions
-  hi @function              guifg=#afffff
-  hi @function.builtin      guifg=#afffff
-  hi @function.call         guifg=#afffff
-  hi @function.macro        guifg=#ff005f
-  hi @method                guifg=#afffff
-  hi @method.call           guifg=#afffff
-  hi @constructor           guifg=#afffff
+  hi @function              guifg=#d7afff
+  hi @function.builtin      guifg=#d7afff
+  hi @function.call         guifg=#d7afff
+  hi @function.macro        guifg=#d7afff
+  hi @method                guifg=#d7afff
+  hi @method.call           guifg=#d7afff
+  hi @constructor           guifg=#d7afff
   " Variable / Parameter
   hi @parameter             guifg=#d7afff
   hi @variable              guifg=#d7afff

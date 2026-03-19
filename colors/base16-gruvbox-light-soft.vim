@@ -431,11 +431,11 @@ if has("nvim")
   " Comment
   hi @comment               guifg=#bdae93 gui=italic
   " Keyword — matches Keyword (0E), Conditional (0E), Repeat (0A), Exception (08)
-  hi @keyword               guifg=#8f3f71
-  hi @keyword.function      guifg=#8f3f71
+  hi @keyword               guifg=#9d0006
+  hi @keyword.function      guifg=#9d0006
   hi @keyword.operator      guifg=#8f3f71
   hi @keyword.return        guifg=#8f3f71
-  hi @conditional           guifg=#8f3f71
+  hi @conditional           guifg=#9d0006
   hi @repeat                guifg=#b57614
   hi @exception             guifg=#9d0006
   hi @include               guifg=#076678
@@ -445,7 +445,7 @@ if has("nvim")
   hi @string.regex          guifg=#427b58
   hi @string.regexp         guifg=#427b58
   hi @string.special        guifg=#427b58
-  hi @string.special.symbol guifg=#79740e
+  hi @string.special.symbol guifg=#076678
   hi @character             guifg=#9d0006
   " Constant / Number — matches Constant (09), Number (09), Boolean (09)
   hi @number                guifg=#af3a03
@@ -455,13 +455,13 @@ if has("nvim")
   hi @constant.builtin      guifg=#af3a03
   hi @constant.macro        guifg=#9d0006
   " Function / Method — matches Function (0D); calls same as definitions
-  hi @function              guifg=#076678
-  hi @function.builtin      guifg=#076678
-  hi @function.call         guifg=#076678
-  hi @function.macro        guifg=#9d0006
-  hi @method                guifg=#076678
-  hi @method.call           guifg=#076678
-  hi @constructor           guifg=#076678
+  hi @function              guifg=#8f3f71
+  hi @function.builtin      guifg=#8f3f71
+  hi @function.call         guifg=#8f3f71
+  hi @function.macro        guifg=#8f3f71
+  hi @method                guifg=#8f3f71
+  hi @method.call           guifg=#8f3f71
+  hi @constructor           guifg=#8f3f71
   " Variable / Parameter
   hi @parameter             guifg=#504945
   hi @variable              guifg=#504945
@@ -481,7 +481,7 @@ if has("nvim")
   " Punctuation
   hi @punctuation.bracket   guifg=#504945
   hi @punctuation.delimiter guifg=#504945
-  hi @punctuation.special   guifg=#8f3f71
+  hi @punctuation.special   guifg=#504945
   " Markup
   hi @text.literal          guifg=#79740e
   hi @text.uri              guifg=#9d0006 gui=underline

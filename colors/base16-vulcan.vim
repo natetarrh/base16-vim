@@ -431,11 +431,11 @@ if has("nvim")
   " Comment
   hi @comment               guifg=#7a5759 gui=italic
   " Keyword — matches Keyword (0E), Conditional (0E), Repeat (0A), Exception (08)
-  hi @keyword               guifg=#9198a3
-  hi @keyword.function      guifg=#9198a3
+  hi @keyword               guifg=#818591
+  hi @keyword.function      guifg=#818591
   hi @keyword.operator      guifg=#9198a3
   hi @keyword.return        guifg=#9198a3
-  hi @conditional           guifg=#9198a3
+  hi @conditional           guifg=#818591
   hi @repeat                guifg=#adb4b9
   hi @exception             guifg=#818591
   hi @include               guifg=#977d7c
@@ -455,13 +455,13 @@ if has("nvim")
   hi @constant.builtin      guifg=#9198a3
   hi @constant.macro        guifg=#818591
   " Function / Method — matches Function (0D); calls same as definitions
-  hi @function              guifg=#977d7c
-  hi @function.builtin      guifg=#977d7c
-  hi @function.call         guifg=#977d7c
-  hi @function.macro        guifg=#818591
-  hi @method                guifg=#977d7c
-  hi @method.call           guifg=#977d7c
-  hi @constructor           guifg=#977d7c
+  hi @function              guifg=#9198a3
+  hi @function.builtin      guifg=#9198a3
+  hi @function.call         guifg=#9198a3
+  hi @function.macro        guifg=#9198a3
+  hi @method                guifg=#9198a3
+  hi @method.call           guifg=#9198a3
+  hi @constructor           guifg=#9198a3
   " Variable / Parameter
   hi @parameter             guifg=#5b778c
   hi @variable              guifg=#5b778c
@@ -481,7 +481,7 @@ if has("nvim")
   " Punctuation
   hi @punctuation.bracket   guifg=#5b778c
   hi @punctuation.delimiter guifg=#5b778c
-  hi @punctuation.special   guifg=#9198a3
+  hi @punctuation.special   guifg=#5b778c
   " Markup
   hi @text.literal          guifg=#977d7c
   hi @text.uri              guifg=#818591 gui=underline

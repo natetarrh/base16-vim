@@ -445,7 +445,7 @@ if has("nvim")
   hi @string.regex          guifg=#00A0BE
   hi @string.regexp         guifg=#00A0BE
   hi @string.special        guifg=#00A0BE
-  hi @string.special.symbol guifg=#DF0002
+  hi @string.special.symbol guifg=#790EAD
   hi @character             guifg=#B21889
   " Constant / Number — matches Constant (09), Number (09), Boolean (09)
   hi @number                guifg=#786DC5
@@ -455,13 +455,13 @@ if has("nvim")
   hi @constant.builtin      guifg=#786DC5
   hi @constant.macro        guifg=#B21889
   " Function / Method — matches Function (0D); calls same as definitions
-  hi @function              guifg=#790EAD
-  hi @function.builtin      guifg=#790EAD
-  hi @function.call         guifg=#790EAD
+  hi @function              guifg=#B21889
+  hi @function.builtin      guifg=#B21889
+  hi @function.call         guifg=#B21889
   hi @function.macro        guifg=#B21889
-  hi @method                guifg=#790EAD
-  hi @method.call           guifg=#790EAD
-  hi @constructor           guifg=#790EAD
+  hi @method                guifg=#B21889
+  hi @method.call           guifg=#B21889
+  hi @constructor           guifg=#B21889
   " Variable / Parameter
   hi @parameter             guifg=#939599
   hi @variable              guifg=#939599
@@ -481,7 +481,7 @@ if has("nvim")
   " Punctuation
   hi @punctuation.bracket   guifg=#939599
   hi @punctuation.delimiter guifg=#939599
-  hi @punctuation.special   guifg=#B21889
+  hi @punctuation.special   guifg=#939599
   " Markup
   hi @text.literal          guifg=#DF0002
   hi @text.uri              guifg=#B21889 gui=underline
