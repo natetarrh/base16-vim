@@ -153,11 +153,22 @@ function! g:Base16hi(group, guifg, guibg, ctermfg, ctermbg, ...)
   let l:attr = get(a:, 1, "")
   let l:guisp = get(a:, 2, "")
 
+  " See :help highlight-guifg
+  let l:gui_special_names = ["NONE", "bg", "background", "fg", "foreground"]
+
   if a:guifg != ""
-    exec "hi " . a:group . " guifg=#" . a:guifg
+    if index(l:gui_special_names, a:guifg) >= 0
+      exec "hi " . a:group . " guifg=" . a:guifg
+    else
+      exec "hi " . a:group . " guifg=#" . a:guifg
+    endif
   endif
   if a:guibg != ""
-    exec "hi " . a:group . " guibg=#" . a:guibg
+    if index(l:gui_special_names, a:guibg) >= 0
+      exec "hi " . a:group . " guibg=" . a:guibg
+    else
+      exec "hi " . a:group . " guibg=#" . a:guibg
+    endif
   endif
   if a:ctermfg != ""
     exec "hi " . a:group . " ctermfg=" . a:ctermfg
@@ -169,7 +180,11 @@ function! g:Base16hi(group, guifg, guibg, ctermfg, ctermbg, ...)
     exec "hi " . a:group . " gui=" . l:attr . " cterm=" . l:attr
   endif
   if l:guisp != ""
-    exec "hi " . a:group . " guisp=#" . l:guisp
+    if index(l:gui_special_names, l:guisp) >= 0
+      exec "hi " . a:group . " guisp=" . l:guisp
+    else
+      exec "hi " . a:group . " guisp=#" . l:guisp
+    endif
   endif
 endfunction
 
@@ -332,6 +347,12 @@ call <sid>hi("jsGlobalNodeObjects", s:gui0A, "", s:cterm0A, "", "", "")
 call <sid>hi("jsExceptions",        s:gui0A, "", s:cterm0A, "", "", "")
 call <sid>hi("jsBuiltins",          s:gui0A, "", s:cterm0A, "", "", "")
 
+" LSP highlighting
+call <sid>hi("LspDiagnosticsDefaultError", s:gui08, "", s:cterm08, "", "", "")
+call <sid>hi("LspDiagnosticsDefaultWarning", s:gui09, "", s:cterm09, "", "", "")
+call <sid>hi("LspDiagnosticsDefaultHnformation", s:gui05, "", s:cterm05, "", "", "")
+call <sid>hi("LspDiagnosticsDefaultHint", s:gui03, "", s:cterm03, "", "", "")
+
 " Mail highlighting
 call <sid>hi("mailQuoted1",  s:gui0A, "", s:cterm0A, "", "", "")
 call <sid>hi("mailQuoted2",  s:gui0B, "", s:cterm0B, "", "", "")
@@ -404,6 +425,70 @@ call <sid>hi("StartifySpecial",  s:gui03, "", s:cterm03, "", "", "")
 
 " Java highlighting
 call <sid>hi("javaOperator",     s:gui0D, "", s:cterm0D, "", "", "")
+
+" Treesitter highlighting (Neovim 0.8+)
+if has("nvim")
+  " Comment
+  hi @comment               guifg=#737171 gui=italic
+  " Keyword — matches Keyword (0E), Conditional (0E), Repeat (0A), Exception (08)
+  hi @keyword               guifg=#98005d
+  hi @keyword.function      guifg=#98005d
+  hi @keyword.operator      guifg=#98005d
+  hi @keyword.return        guifg=#98005d
+  hi @conditional           guifg=#98005d
+  hi @repeat                guifg=#ffd204
+  hi @exception             guifg=#ee2e24
+  hi @include               guifg=#009ddc
+  " String — matches String (0B), SpecialChar (0F), Special (0C)
+  hi @string                guifg=#00853e
+  hi @string.escape         guifg=#85cebc
+  hi @string.regex          guifg=#85cebc
+  hi @string.regexp         guifg=#85cebc
+  hi @string.special        guifg=#85cebc
+  hi @string.special.symbol guifg=#00853e
+  hi @character             guifg=#ee2e24
+  " Constant / Number — matches Constant (09), Number (09), Boolean (09)
+  hi @number                guifg=#f386a1
+  hi @boolean               guifg=#f386a1
+  hi @float                 guifg=#f386a1
+  hi @constant              guifg=#f386a1
+  hi @constant.builtin      guifg=#f386a1
+  hi @constant.macro        guifg=#ee2e24
+  " Function / Method — matches Function (0D); calls same as definitions
+  hi @function              guifg=#009ddc
+  hi @function.builtin      guifg=#009ddc
+  hi @function.call         guifg=#009ddc
+  hi @function.macro        guifg=#ee2e24
+  hi @method                guifg=#009ddc
+  hi @method.call           guifg=#009ddc
+  hi @constructor           guifg=#009ddc
+  " Variable / Parameter
+  hi @parameter             guifg=#d9d8d8
+  hi @variable              guifg=#d9d8d8
+  hi @variable.builtin      guifg=#f386a1
+  hi @field                 guifg=#d9d8d8
+  hi @property              guifg=#d9d8d8
+  " Type — matches Type (0A)
+  hi @type                  guifg=#ffd204
+  hi @type.builtin          guifg=#ffd204
+  hi @type.definition       guifg=#ffd204
+  hi @namespace             guifg=#ffd204
+  hi @symbol                guifg=#00853e
+  " Tag (HTML/XML)
+  hi @tag                   guifg=#ee2e24
+  hi @tag.attribute         guifg=#ffd204
+  hi @tag.delimiter         guifg=#d9d8d8
+  " Punctuation
+  hi @punctuation.bracket   guifg=#d9d8d8
+  hi @punctuation.delimiter guifg=#d9d8d8
+  hi @punctuation.special   guifg=#98005d
+  " Markup
+  hi @text.literal          guifg=#00853e
+  hi @text.uri              guifg=#ee2e24 gui=underline
+  hi @text.reference        guifg=#009ddc
+  hi @text.strong           guifg=#d9d8d8 gui=bold
+  hi @text.emphasis         guifg=#d9d8d8 gui=italic
+endif
 
 " Remove functions
 delf <sid>hi

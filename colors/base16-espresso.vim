@@ -426,6 +426,70 @@ call <sid>hi("StartifySpecial",  s:gui03, "", s:cterm03, "", "", "")
 " Java highlighting
 call <sid>hi("javaOperator",     s:gui0D, "", s:cterm0D, "", "", "")
 
+" Treesitter highlighting (Neovim 0.8+)
+if has("nvim")
+  " Comment
+  hi @comment               guifg=#777777 gui=italic
+  " Keyword — matches Keyword (0E), Conditional (0E), Repeat (0A), Exception (08)
+  hi @keyword               guifg=#d197d9
+  hi @keyword.function      guifg=#d197d9
+  hi @keyword.operator      guifg=#d197d9
+  hi @keyword.return        guifg=#d197d9
+  hi @conditional           guifg=#d197d9
+  hi @repeat                guifg=#ffc66d
+  hi @exception             guifg=#d25252
+  hi @include               guifg=#6c99bb
+  " String — matches String (0B), SpecialChar (0F), Special (0C)
+  hi @string                guifg=#a5c261
+  hi @string.escape         guifg=#bed6ff
+  hi @string.regex          guifg=#bed6ff
+  hi @string.regexp         guifg=#bed6ff
+  hi @string.special        guifg=#bed6ff
+  hi @string.special.symbol guifg=#a5c261
+  hi @character             guifg=#d25252
+  " Constant / Number — matches Constant (09), Number (09), Boolean (09)
+  hi @number                guifg=#f9a959
+  hi @boolean               guifg=#f9a959
+  hi @float                 guifg=#f9a959
+  hi @constant              guifg=#f9a959
+  hi @constant.builtin      guifg=#f9a959
+  hi @constant.macro        guifg=#d25252
+  " Function / Method — matches Function (0D); calls same as definitions
+  hi @function              guifg=#6c99bb
+  hi @function.builtin      guifg=#6c99bb
+  hi @function.call         guifg=#6c99bb
+  hi @function.macro        guifg=#d25252
+  hi @method                guifg=#6c99bb
+  hi @method.call           guifg=#6c99bb
+  hi @constructor           guifg=#6c99bb
+  " Variable / Parameter
+  hi @parameter             guifg=#cccccc
+  hi @variable              guifg=#cccccc
+  hi @variable.builtin      guifg=#f9a959
+  hi @field                 guifg=#cccccc
+  hi @property              guifg=#cccccc
+  " Type — matches Type (0A)
+  hi @type                  guifg=#ffc66d
+  hi @type.builtin          guifg=#ffc66d
+  hi @type.definition       guifg=#ffc66d
+  hi @namespace             guifg=#ffc66d
+  hi @symbol                guifg=#a5c261
+  " Tag (HTML/XML)
+  hi @tag                   guifg=#d25252
+  hi @tag.attribute         guifg=#ffc66d
+  hi @tag.delimiter         guifg=#cccccc
+  " Punctuation
+  hi @punctuation.bracket   guifg=#cccccc
+  hi @punctuation.delimiter guifg=#cccccc
+  hi @punctuation.special   guifg=#d197d9
+  " Markup
+  hi @text.literal          guifg=#a5c261
+  hi @text.uri              guifg=#d25252 gui=underline
+  hi @text.reference        guifg=#6c99bb
+  hi @text.strong           guifg=#cccccc gui=bold
+  hi @text.emphasis         guifg=#cccccc gui=italic
+endif
+
 " Remove functions
 delf <sid>hi
 

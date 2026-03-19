@@ -10,7 +10,7 @@
 "   let g:base16_shell_path=base16-builder/output/shell/
 if !has("gui_running")
   if exists("g:base16_shell_path")
-    execute "silent !/bin/sh ".g:base16_shell_path."/base16-horizon-light.sh"
+    execute "silent !/bin/sh ".g:base16_shell_path."/base16-horizon-terminal-light.sh"
   endif
 endif
 
@@ -145,7 +145,7 @@ endif
 " Theme setup
 hi clear
 syntax reset
-let g:colors_name = "base16-horizon-light"
+let g:colors_name = "base16-horizon-terminal-light"
 
 " Highlighting function
 " Optional variables are attributes and guisp
@@ -425,6 +425,70 @@ call <sid>hi("StartifySpecial",  s:gui03, "", s:cterm03, "", "", "")
 
 " Java highlighting
 call <sid>hi("javaOperator",     s:gui0D, "", s:cterm0D, "", "", "")
+
+" Treesitter highlighting (Neovim 0.8+)
+if has("nvim")
+  " Comment
+  hi @comment               guifg=#BDB3B1 gui=italic
+  " Keyword — matches Keyword (0E), Conditional (0E), Repeat (0A), Exception (08)
+  hi @keyword               guifg=#EE64AC
+  hi @keyword.function      guifg=#EE64AC
+  hi @keyword.operator      guifg=#EE64AC
+  hi @keyword.return        guifg=#EE64AC
+  hi @conditional           guifg=#EE64AC
+  hi @repeat                guifg=#FADAD1
+  hi @exception             guifg=#E95678
+  hi @include               guifg=#26BBD9
+  " String — matches String (0B), SpecialChar (0F), Special (0C)
+  hi @string                guifg=#29D398
+  hi @string.escape         guifg=#59E1E3
+  hi @string.regex          guifg=#59E1E3
+  hi @string.regexp         guifg=#59E1E3
+  hi @string.special        guifg=#59E1E3
+  hi @string.special.symbol guifg=#29D398
+  hi @character             guifg=#E95678
+  " Constant / Number — matches Constant (09), Number (09), Boolean (09)
+  hi @number                guifg=#F9CEC3
+  hi @boolean               guifg=#F9CEC3
+  hi @float                 guifg=#F9CEC3
+  hi @constant              guifg=#F9CEC3
+  hi @constant.builtin      guifg=#F9CEC3
+  hi @constant.macro        guifg=#E95678
+  " Function / Method — matches Function (0D); calls same as definitions
+  hi @function              guifg=#26BBD9
+  hi @function.builtin      guifg=#26BBD9
+  hi @function.call         guifg=#26BBD9
+  hi @function.macro        guifg=#E95678
+  hi @method                guifg=#26BBD9
+  hi @method.call           guifg=#26BBD9
+  hi @constructor           guifg=#26BBD9
+  " Variable / Parameter
+  hi @parameter             guifg=#403C3D
+  hi @variable              guifg=#403C3D
+  hi @variable.builtin      guifg=#F9CEC3
+  hi @field                 guifg=#403C3D
+  hi @property              guifg=#403C3D
+  " Type — matches Type (0A)
+  hi @type                  guifg=#FADAD1
+  hi @type.builtin          guifg=#FADAD1
+  hi @type.definition       guifg=#FADAD1
+  hi @namespace             guifg=#FADAD1
+  hi @symbol                guifg=#29D398
+  " Tag (HTML/XML)
+  hi @tag                   guifg=#E95678
+  hi @tag.attribute         guifg=#FADAD1
+  hi @tag.delimiter         guifg=#403C3D
+  " Punctuation
+  hi @punctuation.bracket   guifg=#403C3D
+  hi @punctuation.delimiter guifg=#403C3D
+  hi @punctuation.special   guifg=#EE64AC
+  " Markup
+  hi @text.literal          guifg=#29D398
+  hi @text.uri              guifg=#E95678 gui=underline
+  hi @text.reference        guifg=#26BBD9
+  hi @text.strong           guifg=#403C3D gui=bold
+  hi @text.emphasis         guifg=#403C3D gui=italic
+endif
 
 " Remove functions
 delf <sid>hi
